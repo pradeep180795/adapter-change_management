@@ -115,8 +115,12 @@ healthcheck(callback) {
       * for the callback's errorMessage parameter.
       */
         this.emitOffline();
-        log.error(this.id)
-
+        log.error(`Adapter ${this.id} is OFFLINE`);
+        log.error(`Adapter ${this.id} healthcheck failed with error: ${error}`);
+        if(callback)
+          return callback(null, error);
+        else
+          return;
 
    } else {
      /**
@@ -130,7 +134,11 @@ healthcheck(callback) {
       * responseData parameter.
       */
       this.emitOnline();
-      log.info("Success Emit ",this.id)
+        log.info(`Adapter ${this.id} is ONLINE`);
+        if(callback)
+          return callback(result);
+        else
+          return;
    }
  });
 }
@@ -188,13 +196,7 @@ healthcheck(callback) {
      * Note how the object was instantiated in the constructor().
      * get() takes a callback function.
      */
-  this.connector.get((data, error) => {
-    if (error) {
-      console.error(`\nError returned from GET request:\n${JSON.stringify(error)}`);
-    }
-    console.log(`\nResponse returned from GET request:\n${JSON.stringify(data)}`)
-    callback(data,error)
-  });
+  this.connector.get(callback);
   
   }
 
@@ -214,13 +216,7 @@ healthcheck(callback) {
      * Note how the object was instantiated in the constructor().
      * post() takes a callback function.
      */
-    this.connector.post((data, error) => {
-    if (error) {
-      console.error(`\nError returned from POST request:\n${JSON.stringify(error)}`);
-    }
-    console.log(`\nResponse returned from POST request:\n${JSON.stringify(data)}`)
-    callback(data,error)
-  });
+    this.connector.post(callback);
   }
 }
 
