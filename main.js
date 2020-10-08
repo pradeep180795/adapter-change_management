@@ -193,8 +193,9 @@ healthcheck(callback) {
       console.error(`\nError returned from GET request:\n${JSON.stringify(error)}`);
     }
     console.log(`\nResponse returned from GET request:\n${JSON.stringify(data)}`)
+    callback(data,error)
   });
- 
+  
   }
 
   /**
@@ -218,6 +219,7 @@ healthcheck(callback) {
       console.error(`\nError returned from POST request:\n${JSON.stringify(error)}`);
     }
     console.log(`\nResponse returned from POST request:\n${JSON.stringify(data)}`)
+    callback(data,error)
   });
   }
 }
