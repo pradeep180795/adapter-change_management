@@ -181,7 +181,7 @@ healthcheck(callback) {
    * @param {ServiceNowAdapter~requestCallback} callback - The callback that
    *   handles the response.
    */
-  getRecord(callback) {
+  getRecord(data,error) {
     /**
      * Write the body for this function.
      * The function is a wrapper for this.connector's get() method.
@@ -206,7 +206,7 @@ healthcheck(callback) {
    * @param {ServiceNowAdapter~requestCallback} callback - The callback that
    *   handles the response.
    */
-  postRecord(callback) {
+  postRecord(data,error) {
     /**
      * Write the body for this function.
      * The function is a wrapper for this.connector's post() method.
