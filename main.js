@@ -181,7 +181,7 @@ healthcheck(callback) {
    * @param {ServiceNowAdapter~requestCallback} callback - The callback that
    *   handles the response.
    */
-  getRecord(data,error) {
+  getRecord(callback) {
     /**
      * Write the body for this function.
      * The function is a wrapper for this.connector's get() method.
@@ -194,7 +194,7 @@ healthcheck(callback) {
     }
     console.log(`\nResponse returned from GET request:\n${JSON.stringify(data)}`)
   });
-
+ 
   }
 
   /**
@@ -206,7 +206,7 @@ healthcheck(callback) {
    * @param {ServiceNowAdapter~requestCallback} callback - The callback that
    *   handles the response.
    */
-  postRecord(data,error) {
+  postRecord(callback) {
     /**
      * Write the body for this function.
      * The function is a wrapper for this.connector's post() method.
