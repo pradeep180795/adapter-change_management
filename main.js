@@ -189,15 +189,10 @@ class ServiceNowAdapter extends EventEmitter {
    *   handles the response.
    */
   getRecord(callback) {
-    /**
-     * Write the body for this function.
-     * The function is a wrapper for this.connector's get() method.
-     * Note how the object was instantiated in the constructor().
-     * get() takes a callback function.
-     */
+    
     this.connector.get( (data, error) => {
       if ( typeof(data) === 'object' ) {
-        if ( data.hasOwnProperty('body') ) 
+        if ( data.hasOwnProperty('body') ){ 
           let ticketResults = JSON.parse(data.body).result;
           let changeTickets = ticketResults.map( element => {
             return {
