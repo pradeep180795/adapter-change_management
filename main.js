@@ -215,7 +215,7 @@ class ServiceNowAdapter extends EventEmitter {
           return callback(null, `${this.id} get() returned object without body.`);
         }
       } else {
-        return callback(null, ${this.id} get() didn't return the object.`);
+        return callback(null, `${this.id} get() didn't return the object.`);
       }
     });
   }
@@ -241,7 +241,7 @@ class ServiceNowAdapter extends EventEmitter {
         if ( data.hasOwnProperty('body') ) {
     
           let ticketResults = JSON.parse(data.body).result;
-          log.info(`snowChangeTicket is ${JSON.stringify(ticketResults)}`);
+          log.info(`${JSON.stringify(ticketResults)}`);
         
           let changeTickets = {
               change_ticket_number: ticketResults.number,
